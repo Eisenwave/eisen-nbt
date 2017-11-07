@@ -1,7 +1,7 @@
 package me.eisenwave.nbt;
 
 /**
- * Represents a NBT tag.
+ * An abstract NBT-Tag.
  */
 public abstract class NBTTag {
 
@@ -29,9 +29,9 @@ public abstract class NBTTag {
     }
     
     /**
-     * Returns a Mojangson string representing this NBT tag.
+     * Returns a Mojangson string depicting this NBT tag.
      *
-     * @return a Mojangson string representing this NBT tag
+     * @return a Mojangson string depicting this NBT tag
      */
     public abstract String toMSONString();
     
