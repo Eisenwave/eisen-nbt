@@ -3,7 +3,6 @@ package me.eisenwave.nbt.io;
 import me.eisenwave.nbt.*;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Iterator;
 import java.util.Map;
@@ -19,38 +18,27 @@ public class MojangsonWriter extends Writer {
     
     private static final Pattern SIMPLE_STRING = Pattern.compile("[A-Za-z0-9._+-]+");
     
-    // STATIC CONVENIENCE
-    
-    public static String print(String name, NBTTag root) {
-        StringWriter writer = new StringWriter();
-        MojangsonWriter msonWriter = new MojangsonWriter(writer);
-        try {
-            msonWriter.writeNamedTag(name, root);
-        } catch (IOException e) {
-            throw new AssertionError(e);
-        }
-        
-        return writer.toString();
-    }
-    
-    public static String print(NBTNamedTag tag) {
-        return print(tag.getName(), tag.getTag());
-    }
-    
-    public static String print(NBTCompound compound) {
-        return print("", compound);
-    }
-    
     private final Writer writer;
     private final boolean pretty;
     
     private int indent = 0;
     
+    /**
+     * Constructs a new writer.
+     *
+     * @param writer the writer
+     * @param pretty whether to "pretty-print", adding whitespace, line breaks and indent
+     */
     public MojangsonWriter(Writer writer, boolean pretty) {
         this.writer = Objects.requireNonNull(writer);
         this.pretty = pretty;
     }
     
+    /**
+     * Constructs a new writer with disabled pretty printing.
+     *
+     * @param writer the writer
+     */
     public MojangsonWriter(Writer writer) {
         this(writer, false);
     }

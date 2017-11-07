@@ -11,10 +11,18 @@ public class MojangsonSerializer implements TextSerializer<NBTNamedTag> {
     
     private final boolean pretty;
     
+    /**
+     * Constructs a new {@code MojangsonSerializer}.
+     *
+     * @param pretty whether to "pretty-print", adding whitespace, line breaks and indent
+     */
     public MojangsonSerializer(boolean pretty) {
         this.pretty = pretty;
     }
     
+    /**
+     * Constructs a new {@code MojangsonSerializer} with disabled pretty-printing.
+     */
     public MojangsonSerializer() {
         this(false);
     }

@@ -23,6 +23,10 @@ public final class NBTCompound extends NBTTag {
             this.value.put(tag.getName(), tag.getTag());
     }
     
+    public NBTCompound() {
+        this.value = new LinkedHashMap<>();
+    }
+    
     // GETTERS
     
     /**
@@ -398,25 +402,5 @@ public final class NBTCompound extends NBTTag {
         
         return builder.append("}").toString();
     }
-    
-    /*
-    @Override
-    public String toMSONStringOld() {
-        StringBuilder builder = new StringBuilder("{");
-        Iterator<Map.Entry<String, NBTTag>> iter = value.entrySet().iterator();
-        boolean first = true;
-        while (iter.hasNext()) {
-            Map.Entry<String, NBTTag> next = iter.next();
-            builder
-                .append('\"')
-                .append(next.getKey())
-                .append("\": ")
-                .append(next.getValue());
-            if (hasNext = iter.hasNext())
-                builder.append(", ");
-        }
-        return builder.append("}").toString();
-    }
-    */
 
 }

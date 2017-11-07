@@ -83,8 +83,4 @@ public interface Deserializer<T> {
         }
     }
     
-    public default T fromURL(String url) throws IOException {
-       return fromURL(new URL(url));
-    }
-    
 }

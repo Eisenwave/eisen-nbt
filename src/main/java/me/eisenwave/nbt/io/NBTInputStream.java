@@ -48,7 +48,25 @@ public final class NBTInputStream extends DataInputStream {
         return readNamedTag(0);
     }
     
-    private NBTNamedTag readNamedTag(int depth) throws IOException {
+    /**
+     * <p>
+     *     Reads a tag and its name from the stream.
+     * </p>
+     * <p>
+     *     Should the tag be of type {@link NBTType#COMPOUND} or {@link NBTType#LIST} will the full content (all
+     *     elements in the compounds or list) be read.
+     * </p>
+     * <p>
+     *     Null may be returned if the id of the tag can not be read due to the stream ending (expected end).
+     *     If however the stream ends while reading either the tag name or the tag payload, an {@link IOException} is
+     *     thrown (unexpected end).
+     * </p>
+     *
+     * @param depth the depth (used for recursive reading of lists or compounds)
+     * @return the tag that was read or null if EOF is reached
+     * @throws IOException if an I/O error occurs
+     */
+    public NBTNamedTag readNamedTag(int depth) throws IOException {
         int id = read();
         if (id == -1) return null;
         NBTType type = NBTType.getById((byte) id);
@@ -117,7 +135,7 @@ public final class NBTInputStream extends DataInputStream {
 
     public NBTList readTagList(int depth) throws IOException {
         NBTType elementType = NBTType.getById(readByte());
-        final int length = readInt();
+        int length = readInt();
         
         if (elementType == NBTType.END && length > 0)
             throw new IOException("List is of type TAG_End but not empty");
@@ -146,7 +164,7 @@ public final class NBTInputStream extends DataInputStream {
     }
 
     public NBTIntArray readTagIntArray() throws IOException {
-        final int length = readInt();
+        int length = readInt();
         int[] data = new int[length];
         for (int i = 0; i < length; i++)
             data[i] = readInt();
@@ -155,7 +173,7 @@ public final class NBTInputStream extends DataInputStream {
     }
     
     public NBTLongArray readTagLongArray() throws IOException {
-        final int length = readInt();
+        int length = readInt();
         long[] data = new long[length];
         for (int i = 0; i < length; i++)
             data[i] = readLong();

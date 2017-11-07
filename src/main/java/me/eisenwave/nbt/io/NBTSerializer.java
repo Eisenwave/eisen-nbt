@@ -11,6 +11,11 @@ public class NBTSerializer implements Serializer<NBTNamedTag> {
     
     private final boolean compress;
     
+    /**
+     * Constructs a new NBT-Serializer.
+     *
+     * @param compress whether to use gzip compression.
+     */
     public NBTSerializer(boolean compress) {
         this.compress = compress;
     }

@@ -42,9 +42,9 @@ public enum NBTType {
     
     LONG_ARRAY("TAG_Long_Array", false, false, true);
 
-    final String name;
-    final boolean numeric, primitive, array;
-    final byte id;
+    private final String name;
+    private final boolean numeric, primitive, array;
+    private final byte id;
 
     NBTType(String name, boolean primitive, boolean numeric, boolean array) {
         this.name = name;
