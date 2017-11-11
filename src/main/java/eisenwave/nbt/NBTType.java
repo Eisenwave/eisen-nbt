@@ -4,42 +4,82 @@ package eisenwave.nbt;
  * The type of an NBT-NBTTag.
  */
 public enum NBTType {
-    /** Used to mark the end of compounds tags. May also be the type of empty list tags. */
+    /**
+     * Used to mark the end of compounds tags. May also be the type of empty list tags.
+     * @since NBT Version 19132
+     */
     END("TAG_End", false, false, false),
 
-    /** A signed integer (8 bits). Sometimes used for booleans. (-128 to 127) */
+    /**
+     * A signed integer (8 bits). Sometimes used for booleans. (-128 to 127)
+     * @since NBT Version 19132
+     */
     BYTE("TAG_Byte", true, true, false),
 
-    /** A signed integer (16 bits). (-2<sup>15</sup> to 2<sup>15</sup>-1) */
+    /**
+     * A signed integer (16 bits). (-2<sup>15</sup> to 2<sup>15</sup>-1)
+     * @since NBT Version 19132
+     */
     SHORT("TAG_Short", true, true, false),
 
-    /** A signed integer (32 bits). (-2<sup>31</sup> to 2<sup>31</sup>-1) */
+    /**
+     * A signed integer (32 bits). (-2<sup>31</sup> to 2<sup>31</sup>-1)
+     * @since NBT Version 19132
+     */
     INT("TAG_Int", true, true, false),
 
-    /** A signed integer (64 bits). (-2<sup>63</sup> to 2<sup>63</sup>-1) */
+    /**
+     * A signed integer (64 bits). (-2<sup>63</sup> to 2<sup>63</sup>-1)
+     * @since NBT Version 19132
+     */
     LONG("TAG_Long", true, true, false),
 
-    /** A signed (IEEE 754-2008) floating point number (32 bits).  */
+    /**
+     * A signed (IEEE 754-2008) floating point number (32 bits).
+     * @since NBT Version 19132
+     */
     FLOAT("TAG_Float", true, true, false),
 
-    /** A signed (IEEE 754-2008) floating point number (64 bits).  */
+    /**
+     * A signed (IEEE 754-2008) floating point number (64 bits).
+     * @since NBT Version 19132
+     */
     DOUBLE("TAG_Double", true, true, false),
-
-    /** An array of bytes with max payload size of maximum value of {@link #INT}. */
+    
+    /**
+     * An array of {@link #BYTE} with maximum length of {@link Integer#MAX_VALUE}.
+     * @since NBT Version 19132
+     */
     BYTE_ARRAY("TAG_Byte_Array", false, false, true),
 
-    /** UTF-8 encoded string. */
+    /**
+     * UTF-8 encoded string.
+     * @since NBT Version 19132
+     */
     STRING("TAG_String", true, false, false),
 
-    /** A list of unnamed tags of equal type. */
+    /**
+     * A list of unnamed tags of equal type.
+     * @since NBT Version 19132
+     */
     LIST("TAG_List", false, false, false),
 
-    /** Compound of named tags followed by {@link #END}. */
+    /**
+     * Compound of named tags followed by {@link #END}.
+     * @since NBT Version 19132
+     */
     COMPOUND("TAG_Compound", false, false, false),
-
-    /** An array of {@link #INT} with max payload size of maximum value of {@link #INT}. */
+    
+    /**
+     * An array of {@link #BYTE} with maximum length of {@link Integer#MAX_VALUE}.
+     * @since NBT Version 19132
+     */
     INT_ARRAY("TAG_Int_Array", false, false, true),
     
+    /**
+     * An array of {@link #LONG} with maximum length of {@link Integer#MAX_VALUE}.
+     * @since NBT Version 19133
+     */
     LONG_ARRAY("TAG_Long_Array", false, false, true);
 
     private final String name;
@@ -73,12 +113,17 @@ public enum NBTType {
      *     since it is not guaranteed that this behavior will remain consistent.
      * </p>
      *
-     * @return the id of this tag type
+     * @return the id
      */
     public byte getId() {
         return id;
     }
     
+    /**
+     * Returns the name of this type.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
