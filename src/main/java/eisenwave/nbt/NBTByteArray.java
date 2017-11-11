@@ -1,5 +1,7 @@
 package eisenwave.nbt;
 
+import java.util.Arrays;
+
 /**
  * The {@code TAG_Byte_Array} tag.
  */
@@ -34,6 +36,17 @@ public final class NBTByteArray extends NBTTag {
     @Override
     public NBTType getType() {
         return NBTType.BYTE_ARRAY;
+    }
+    
+    // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTByteArray && equals((NBTByteArray) obj);
+    }
+    
+    public boolean equals(NBTByteArray tag) {
+        return Arrays.equals(this.value, tag.value);
     }
 
     @Override

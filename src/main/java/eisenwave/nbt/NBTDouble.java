@@ -33,6 +33,20 @@ public final class NBTDouble extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTDouble && equals((NBTDouble) obj);
+    }
+    
+    public boolean equals(NBTDouble tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Double.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return value+"d";
     }

@@ -1,5 +1,7 @@
 package eisenwave.nbt;
 
+import java.util.Arrays;
+
 /**
  * The {@code TAG_Long_Array} tag.
  */
@@ -39,6 +41,17 @@ public final class NBTLongArray extends NBTTag {
     @Override
     public NBTType getType() {
         return NBTType.LONG_ARRAY;
+    }
+    
+    // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTLongArray && equals((NBTLongArray) obj);
+    }
+    
+    public boolean equals(NBTLongArray tag) {
+        return Arrays.equals(this.value, tag.value);
     }
     
     @Override

@@ -1,5 +1,6 @@
 package eisenwave.nbt;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -44,6 +45,15 @@ public final class NBTIntArray extends NBTTag implements Cloneable {
     }
     
     // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTIntArray && equals((NBTIntArray) obj);
+    }
+    
+    public boolean equals(NBTIntArray tag) {
+        return Arrays.equals(this.value, tag.value);
+    }
     
     @Override
     public String toMSONString() {

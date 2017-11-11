@@ -20,6 +20,11 @@ public final class NBTEnd extends NBTTag implements Cloneable {
     }
     
     // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTEnd;
+    }
 
     @Override
     public String toMSONString() {

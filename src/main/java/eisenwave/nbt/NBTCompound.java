@@ -386,6 +386,16 @@ public final class NBTCompound extends NBTTag {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTCompound && equals((NBTCompound) obj);
+    }
+    
+    public boolean equals(NBTCompound tag) {
+        return this.isEmpty() && tag.isEmpty()
+            || this.value.equals(tag.value);
+    }
+    
+    @Override
     public String toMSONString() {
         StringBuilder builder = new StringBuilder("{");
         Set<String> keys = this.value.keySet();

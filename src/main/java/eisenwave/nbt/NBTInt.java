@@ -32,6 +32,20 @@ public final class NBTInt extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTInt && equals((NBTInt) obj);
+    }
+    
+    public boolean equals(NBTInt tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return Integer.toString(value);
     }

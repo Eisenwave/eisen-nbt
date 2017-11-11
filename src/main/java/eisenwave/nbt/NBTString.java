@@ -28,6 +28,11 @@ public final class NBTString extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
+    
+    @Override
     public String toMSONString() {
         return toMSONString(value);
     }

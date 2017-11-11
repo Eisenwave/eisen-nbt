@@ -32,6 +32,20 @@ public final class NBTShort extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTShort && equals((NBTShort) obj);
+    }
+    
+    public boolean equals(NBTShort tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Short.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return value+"s";
     }

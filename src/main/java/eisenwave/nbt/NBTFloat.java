@@ -32,6 +32,20 @@ public final class NBTFloat extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTFloat && equals((NBTFloat) obj);
+    }
+    
+    public boolean equals(NBTFloat tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Float.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return value+"f";
     }

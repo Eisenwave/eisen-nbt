@@ -32,6 +32,20 @@ public final class NBTByte extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTByte && equals((NBTByte) obj);
+    }
+    
+    public boolean equals(NBTByte tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Byte.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return Byte.toUnsignedInt(value)+"b";
     }

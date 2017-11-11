@@ -142,6 +142,16 @@ public final class NBTList extends NBTTag implements Iterable<NBTTag>, Cloneable
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTList && equals((NBTList) obj);
+    }
+    
+    public boolean equals(NBTList tag) {
+        return this.isEmpty() && tag.isEmpty()
+            || this.type == tag.type && this.list.equals(tag.list);
+    }
+    
+    @Override
     public Iterator<NBTTag> iterator() {
         return list.iterator();
     }

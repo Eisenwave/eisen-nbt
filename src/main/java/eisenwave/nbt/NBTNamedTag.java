@@ -36,5 +36,16 @@ public class NBTNamedTag {
     public NBTTag getTag() {
         return tag;
     }
+    
+    // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTNamedTag && equals((NBTNamedTag) obj);
+    }
+    
+    public boolean equals(NBTNamedTag tag) {
+        return this.name.equals(tag.name) && this.tag.equals(tag.tag);
+    }
 
 }

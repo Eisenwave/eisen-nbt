@@ -35,6 +35,23 @@ public abstract class NBTTag {
      */
     public abstract String toMSONString();
     
+    // MISC
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof NBTTag) {
+            NBTTag tag = (NBTTag) obj;
+            return this.getType() == tag.getType()
+                && this.getValue().equals(tag.getValue());
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        return getValue().hashCode();
+    }
+    
     @Override
     public String toString() {
         return toMSONString();

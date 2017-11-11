@@ -32,6 +32,20 @@ public final class NBTLong extends NBTTag implements Cloneable {
     // MISC
     
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof NBTLong && equals((NBTLong) obj);
+    }
+    
+    public boolean equals(NBTLong tag) {
+        return this.value == tag.value;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Long.hashCode(value);
+    }
+    
+    @Override
     public String toMSONString() {
         return value+"L";
     }
