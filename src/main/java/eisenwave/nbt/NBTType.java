@@ -1,7 +1,17 @@
 package eisenwave.nbt;
 
 /**
- * The type of an NBT-NBTTag.
+ * <p>
+ *    The type of an NBTTag.
+ * </p>
+ * <p>
+ *     This enum may be prone to further additions, such as the {@link #LONG_ARRAY} which has been added by Mojang
+ *     in NBT Version 19133. (second NBT version)
+ * </p>
+ * <p>
+ *     For a community maintained documentation of the NBT format and its types, visit the
+ *     <a href=https://minecraft.gamepedia.com/NBT_format>Minecraft Wiki</a>
+ * </p>
  */
 public enum NBTType {
     /**
