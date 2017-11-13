@@ -85,7 +85,7 @@ public class MojangsonWriter extends Writer {
         write('{');
         
         if (!compound.isEmpty()) {
-            boolean simple = isSimple(compound);
+            boolean simple = isPrimitive(compound);
             
             if (!simple) {
                 indent++;
@@ -132,7 +132,7 @@ public class MojangsonWriter extends Writer {
         write('[');
     
         if (!list.isEmpty()) {
-            boolean simple = isSimple(list);
+            boolean simple = isPrimitive(list);
             if (!simple) {
                 indent++;
                 endLn();
@@ -217,13 +217,12 @@ public class MojangsonWriter extends Writer {
     
     // UTIL
     
-    private static boolean isSimple(NBTList list) {
+    private static boolean isPrimitive(NBTList list) {
         return list.isEmpty() || list.getElementType().isPrimitive();
     }
     
-    private static boolean isSimple(NBTCompound compound) {
-        if (compound.size() > 3)
-            return false;
+    private static boolean isPrimitive(NBTCompound compound) {
+        if (compound.isEmpty()) return true;
         for (NBTTag val : compound.getValue().values()) {
             if (!val.getType().isPrimitive())
                 return false;
