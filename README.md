@@ -1,4 +1,4 @@
-# OpenNBT
+# EisenNBT
 
 ## Introduction
 This library is a lightweight API for reading, writing and generally working with the formats:
