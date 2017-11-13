@@ -2,7 +2,7 @@
 
 ## Introduction
 This library is a lightweight API for reading, writing and generally working with the formats:
-- [NBT (Named Binary Tag)](https://minecraft.gamepedia.com/NBT_format), a binary format developed by Mojang for use in
+- **[NBT (Named Binary Tag)](https://minecraft.gamepedia.com/NBT_format)**, a binary format developed by Mojang for use in
   *Minecraft*
 - **Mojangson**, a [JSON](https://json.org/)-inspired text format developed by Mojang for serializing NBT as text.
 It supports the latest NBT version `19133`.
@@ -34,8 +34,8 @@ Since an official documentation of the Mojangson format doesn't exist, I will be
 differences between JSON and Mojangson.
 
 ### Simple Strings
-Any strings in Mojangson can either be regular JSON Strings or "simple" Strings without quotes, as long as they
-consist of only alphanumeric characters as well as `-`, `+`, `.` and `_`. For example:
+Any strings in Mojangson can either be regular JSON Strings or "simple" String without quotation marks, as long as it
+consists of only alphanumeric characters as well as `-`, `+`, `.` and `_`. For example:
 `{"key":"value"}` can be written as `{key:value}`
 
 ### Number Suffixes
