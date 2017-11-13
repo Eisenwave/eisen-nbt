@@ -14,13 +14,13 @@ Reading and writing NBT files should be primarily done by using the NBT and Moja
 The following example demonstrates how to read, write and interact with this API. Let's assume we want to change the
 world name in a `level.dat` file:
 ```Java
-void setWorldName(String worldName, File file) {
+void setWorldName(String worldName, File file) throws IOException {
     NBTNamedTag namedTag = new NBTDeserializer().fromFile(file);
     // the NBT file format dictates that the root tag MUST be a compound
     NBTCompound root = (NBTCompound) namedTag.getTag();
     NBTCompound data = root.getCompoundTag("Data");
     data.putString("LevelName", worldName);
-    new NBTSerializer().toFile(root, file);
+    new NBTSerializer().toFile(namedTag, file);
 }
 ```
 
