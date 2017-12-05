@@ -1,6 +1,7 @@
 package eisenwave.nbt;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.regex.Pattern;
 
 /**
@@ -238,6 +239,15 @@ public final class NBTCompound extends NBTTag {
         return ((NBTLongArray) tag).getValue();
     }
     
+    /**
+     * Returns an immutable set containing all the keys in this compound.
+     *
+     * @return an immutable set
+     */
+    public Set<String> getKeys() {
+        return Collections.unmodifiableSet(value.keySet());
+    }
+    
     // PREDICATES
     
     /**
@@ -381,6 +391,17 @@ public final class NBTCompound extends NBTTag {
      */
     public void putString(String key, String value) {
         put(key, new NBTString(value));
+    }
+    
+    // ITERATION
+    
+    /**
+     * Performs an action for every pair of keys and tags.
+     *
+     * @param action the action
+     */
+    public void forEach(BiConsumer<String, ? super NBTTag> action) {
+        this.value.forEach(action::accept);
     }
     
     // MISC
